@@ -18,10 +18,18 @@ vteam = ttk.StringVar(root)
 day = ttk.StringVar(root)
 time = ttk.StringVar(root)
 
-#Lists to choose from
-teams = ['Astros','Dodgers']
-days = ['Monday','Tuesday']
-times = ['day','night']
+teams = []
+teamDict = {}
+with open("teamCodeList.txt") as file:
+    for line in file:
+        e = line.strip().split(" = ")
+        teams.append(e[1])
+        teamDict[e[1]] = e[0]
+
+teams.sort()
+
+days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+times = ['Day','Night']
 
 #Set Default Options
 hteam.set("Home Team")
@@ -49,7 +57,7 @@ timeMenu.grid(row = 4, column =3)
 #When button is pressed
 def do_stuff(*args):
     values = [hteam.get(),vteam.get(),day.get(),time.get()]
-    if values[0] not in teams: #add rest of options here
+    if values[0] not in teams or values[1] not in teams or values[2] not in days or values[3] not in times: #add rest of options here
         label = ttk.Label(window, text="Must Select All Boxes")# if not selected something
         label.place(x=60,y=150)
         return
