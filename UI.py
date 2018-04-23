@@ -53,7 +53,7 @@ def do_stuff(*args):
         label = ttk.Label(window, text="Must Select All Boxes")# if not selected something
         label.place(x=60,y=150)
         return
-    print(*values)
+    print(*values) #Do Regression Here
     root.destroy()
 
 #disallow same team to be picked
