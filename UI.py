@@ -74,19 +74,26 @@ def setup():
 
     return root, window, [hteam,vteam,day,time], [teams,days,times], teamDict
 
-def checkValues(values, choices:
+def checkValues(values, choices):
     return values[0] not in choices[0] or values[1] not in choices[0] or values[2] not in choices[1] or values[3] not in choices[2]
+
+def error(window):
+    label = ttk.Label(window, text="Must Select All Boxes")# if not selected something
+    label.place(x=60,y=150)
+
+def getValues(objects):
+    return [objects[0].get(),objects[1].get(),objects[2].get(),objects[3].get()]
+
 
 root, window, objects, choices, teamDict = setup()
 
 #When button is pressed
 def do_stuff(*args):
-    values = [objects[0].get(),objects[1].get(),objects[2].get(),objects[3].get()]
+    values = getValues(objects)
     if checkValues(values,choices):
-        label = ttk.Label(window, text="Must Select All Boxes")# if not selected something
-        label.place(x=60,y=150)
+        error(window)
         return
-    print(teamDict[values[0]], teamDict[values[1]], values[2][:3],values[3][:1]) #Do Regression Here
+    #Do Regression Here
     root.destroy()
 
 #create button to confirm answers
@@ -94,4 +101,5 @@ button = ttk.Button(window, text="OK",command=do_stuff)
 button.grid(row = 5, column = 2)
 
 root.mainloop()
+
 
