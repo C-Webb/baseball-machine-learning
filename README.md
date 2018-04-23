@@ -45,3 +45,21 @@ Starting with the data acquired from Retrosheet we pulled only the features of i
 | 17 | Calculated | Home team win percentage |
 
 # Predicting attendance
+   ###### Investigations
+   We investigated the following features:
+   * Stadium - We found a trend once we arranged the stadiums in a nondecreasing order by attendance
+   * Visiting Team - We found a trend once we arranged the teams in a nondecreasing order by attendance
+   * Day - We did not find any trend for the feature
+   * Time - Since there are only two options this is not a good feature to use for regression
+   * Day+Time - We were able to merge the two features and find a trend when we 
+   * Game number - there seemed to be a spike in the mid season, however we were unable to find a pattern
+   * Month - Following up from the last investigation we looked at each month hoping to find that the summertime games would have a higher attendance
+   * Seasonal team win percentage - We did not find any pattern to the feature concerning attendance
+   
+   ###### Features Used
+   * Stadium
+   * Visiting Team
+   * Day+Time
+   
+   ###### Calculations
+   The data used to regress is dependent on user input. Once we have user input we pull a subset of the data and regress on it.
